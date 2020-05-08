@@ -25,6 +25,9 @@ set nobackup
 set wildmenu
 
 
+
+
+
 set cursorline
 hi CursorLine term=bold cterm=bold
 
@@ -112,30 +115,6 @@ syntax enable
 
 " Display a confirmation dialog when closing an unsaved file
 set confirm
-
-
-" STATUSLINE OPTIONS
-"show status line
-set laststatus=2
-" tail of the filename
-set statusline=%t
-" file format
-set statusline+=\ %{&ff}
-" help file flag
-set statusline+=\ %h
-" modified flag
-set statusline+=\ %m
-" read only flag
-set statusline+=\ %r
-" filetype
-set statusline+=\ %y
-" cursor column
-set statusline+=\ %c,
-" cursor line/total lines
-set statusline+=\ %l/%L
-" percent through file
-set statusline+=\ %P
-
 
 " enable project specific vimrc
 set exrc
@@ -297,6 +276,11 @@ Plug 'janko/vim-test'
 " Plugin to comment code
 Plug 'tpope/vim-commentary'
 
+" Plugin for status line
+Plug 'itchyny/lightline.vim'
+" Plugin to display open buffers
+Plug 'mengelbrecht/lightline-bufferline'
+
 " Initialize plugin system
 call plug#end()
 " ********** Plugins ends ********** "
@@ -340,5 +324,19 @@ colorscheme gruvbox
 " fzf mapping to Ctrl-p like
 " Ctrl-p plugin
 noremap <C-p> :FZF<CR>
+
+" lightline bufferline config
+set showtabline=2 " always show tabline
+
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unnamed      = '[No Name]'
+
+let g:lightline#bufferline#filename_modifier = ':t' " only show filename
+
+let g:lightline                  = {}
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " ********** Plugins config ends ********** "
