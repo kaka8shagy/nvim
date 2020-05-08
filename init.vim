@@ -291,6 +291,12 @@ Plug 'airblade/vim-gitgutter'
 " Mainly using this to help lightline with git
 Plug 'tpope/vim-fugitive'
 
+" Plugin to run test from within vim
+Plug 'janko/vim-test'
+
+" Plugin to comment code
+Plug 'tpope/vim-commentary'
+
 " Initialize plugin system
 call plug#end()
 " ********** Plugins ends ********** "
