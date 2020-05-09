@@ -281,6 +281,9 @@ Plug 'itchyny/lightline.vim'
 " Plugin to display open buffers
 Plug 'mengelbrecht/lightline-bufferline'
 
+" Intellisence engine for nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Initialize plugin system
 call plug#end()
 " ********** Plugins ends ********** "
@@ -338,5 +341,13 @@ let g:lightline                  = {}
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+" Setting to remap go to definitions and implementation using language servers
+" with the help of coc language servers
+" Remap keys for gotos:
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " ********** Plugins config ends ********** "
