@@ -3,10 +3,10 @@
 set nocompatible
 " Indent by 2 spaces when hitting tab
 set softtabstop=2
-" Indent by 4 spaces when auto-indenting
-set shiftwidth=4
-" Show existing tab with 4 spaces width
-set tabstop=4
+" Indent by 2 spaces when auto-indenting
+set shiftwidth=2
+" Show existing tab with 2 spaces width
+set tabstop=2
 " Enable syntax highlighting
 syntax on
 " Enable indenting for files
@@ -77,11 +77,11 @@ set nowb
 set autoindent
 " Smart auto indentation (instead of old smart indent option).
 filetype plugin indent on
-" Show existing tab with 4 spaces width.
-set tabstop=4
+" Show existing tab with 2 spaces width.
+set tabstop=2
 " When indenting with ‘>’, use 2 spaces width.
 set shiftwidth=2
-" On pressing tab, insert 4 spaces.
+" On pressing tab, insert 2 spaces.
 set expandtab
 " Do wrap lines
 set wrap
@@ -283,6 +283,13 @@ Plug 'mengelbrecht/lightline-bufferline'
 
 " Intellisence engine for nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" For markdown support in vim
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" For closing all except current buffer
+source $HOME/.config/nvim/bufonly.vim
 
 " Initialize plugin system
 call plug#end()
