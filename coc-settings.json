@@ -1,4 +1,4 @@
 {
-  "tsserver.npm": "/usr/local/bin/npm",
+  "tsserver.npm": "/home/sagar/.nvm/versions/node/v8.17.0/bin/npm",
   "python.jediEnabled": false
 }

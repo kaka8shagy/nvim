@@ -352,6 +352,7 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 " Setting to remap go to definitions and implementation using language servers
 " with the help of coc language servers
 " Remap keys for gotos:
+let g:coc_disable_startup_warning = 1
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
