@@ -60,8 +60,8 @@ set wildmenu
 set tabpagemax=40
 
 
-" Enable mouse for scrolling and resizing
-set mouse=a
+" Disable mouse
+set mouse-=a
 " Use colors that suit a dark background
 set background=dark
 
