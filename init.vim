@@ -1,12 +1,12 @@
 " ********** Editor config starts ********** "
 " Use Vim settings, rather than Vi settings
 set nocompatible
-" Indent by 2 spaces when hitting tab
-set softtabstop=2
-" Indent by 2 spaces when auto-indenting
-set shiftwidth=2
-" Show existing tab with 2 spaces width
-set tabstop=2
+" Indent by 4 spaces when hitting tab
+set softtabstop=4
+" Indent by 4 spaces when auto-indenting
+set shiftwidth=4
+" Show existing tab with 4 spaces width
+set tabstop=4
 " Enable syntax highlighting
 syntax on
 " Enable indenting for files
@@ -23,9 +23,10 @@ colorscheme default
 set nobackup
 " Display command line's tab complete options as a menu.
 set wildmenu
-
-
-
+" ignore this files
+set wildignore=*.swp,*.bak,*.pyc,*.class
+" maps system keyboard to vim's paste buffer
+set clipboard=unnamedplus
 
 
 set cursorline
@@ -157,7 +158,7 @@ set foldnestmax=10
 " Defines the type of folding
 " Other values are indent, syntax, marker,
 " expr, diff
-set foldmethod=manual
+set foldmethod=indent
 
 
 " save file on pressing Ctrl-s
@@ -209,6 +210,15 @@ fun! s:MkNonExDir(file, buf)
     call mkdir(fnamemodify(a:file, ':h'), 'p')
   endif
 endfun
+
+" to skip pressing Shift everytime
+" suggestion taken from https://nvie.com/posts/how-i-boosted-my-vim/
+nnoremap ; :
+
+" use jk to switch to normal mode to be more efficient
+" going to Esc key is too tiring :-)
+inoremap jk <ESC>
+
 " ********** Editor config ends ********** "
 
 
@@ -288,6 +298,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+" easy motion inside vim
+Plug 'easymotion/vim-easymotion'
+
+" devicons
+Plug 'ryanoasis/vim-devicons'
+
+" limelight, highlight lines around the cursor
+Plug 'junegunn/limelight.vim'
+
 " For closing all except current buffer
 source $HOME/.config/nvim/bufonly.vim
 
@@ -331,9 +350,16 @@ call plug#end()
 " ********** Plugins config start ********** "
 colorscheme gruvbox
 
+
 " fzf mapping to Ctrl-p like
 " Ctrl-p plugin
 noremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+\}
+
 
 " lightline bufferline config
 set showtabline=2 " always show tabline
@@ -349,13 +375,38 @@ let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 
+
 " Setting to remap go to definitions and implementation using language servers
 " with the help of coc language servers
 " Remap keys for gotos:
 let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+
+" EasyMotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" Limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_default_coefficient = 0.7
+
+" set fira code as the font for vim
+set guifont=Fira\ Code\ Regular\ Nerd\ Font\ Complete
 
 " ********** Plugins config ends ********** "
