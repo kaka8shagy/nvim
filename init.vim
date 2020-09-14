@@ -327,6 +327,9 @@ Plug 'ryanoasis/vim-devicons'
 " limelight, highlight lines around the cursor
 Plug 'junegunn/limelight.vim'
 
+" see contents of register
+Plug 'junegunn/vim-peekaboo'
+
 " For closing all except current buffer
 source $HOME/.config/nvim/bufonly.vim
 
