@@ -219,6 +219,13 @@ nnoremap ; :
 " going to Esc key is too tiring :-)
 inoremap jk <ESC>
 
+
+" run ruby code using leader-r only when inside a .rb file
+autocmd BufRead, *.rb nmap <leader>r :!ruby %<cr>
+
+" run python code using leader-p only when inside a .py file
+autocmd BufRead, *.py nmap <leader>p :!python %<cr>
+
 " ********** Editor config ends ********** "
 
 
