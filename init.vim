@@ -293,6 +293,19 @@ Plug 'mengelbrecht/lightline-bufferline'
 
 " Intellisence engine for nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-css'
+Plug 'neoclide/coc-python'
+Plug 'neoclide/coc-emmet'
+Plug 'neoclide/coc-html'
+Plug 'neoclide/coc-rls'
+Plug 'neoclide/coc-tsserver'
+Plug 'elixir-lsp/coc-elixir'
+Plug 'hyhugh/coc-erlang_ls'
+Plug 'felippepuhle/coc-graphql'
+Plug 'fannheyward/coc-julia'
+Plug 'fannheyward/coc-rust-analyzer'
+Plug 'voldikss/coc-todolist'
+Plug 'neoclide/coc-prettier'
 
 " For markdown support in vim
 Plug 'godlygeek/tabular'
@@ -380,7 +393,6 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 " with the help of coc language servers
 " Remap keys for gotos:
 let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
