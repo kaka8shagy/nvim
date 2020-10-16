@@ -259,7 +259,11 @@ autocmd BufRead, *.py nmap <leader>p :!python %<cr>
 
 
 
-
+" auto-install vim-plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \                                                                  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
+endif
 
 " ********** Plugins starts ********** "
 " Specify a directory for plugins
@@ -300,19 +304,6 @@ Plug 'mengelbrecht/lightline-bufferline'
 
 " Intellisence engine for nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-css'
-Plug 'neoclide/coc-python'
-Plug 'neoclide/coc-emmet'
-Plug 'neoclide/coc-html'
-Plug 'neoclide/coc-rls'
-Plug 'neoclide/coc-tsserver'
-Plug 'elixir-lsp/coc-elixir'
-Plug 'hyhugh/coc-erlang_ls'
-Plug 'felippepuhle/coc-graphql'
-Plug 'fannheyward/coc-julia'
-Plug 'fannheyward/coc-rust-analyzer'
-Plug 'voldikss/coc-todolist'
-Plug 'neoclide/coc-prettier'
 
 " For markdown support in vim
 Plug 'godlygeek/tabular'
